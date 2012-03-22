@@ -22,7 +22,6 @@ VIDEO_SORT_ORDER = [
 ART = 'art-default.jpg'
 ICON = 'icon-default.png'
 ICON_MORE = 'icon-more.png'
-ICON_PREFS = 'icon-prefs.png'
 
 ####################################################################################################
 def Start():
