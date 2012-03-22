@@ -16,7 +16,8 @@ VIDEO_SORT_ORDER = [
 	['Most Viewed - Weekly', 'o=mv&t=w'],
 	['Most Viewed - Monthly', 'o=mv&t=m'],
 	['Most Viewed - All time', 'o=mv&t=a'],
-	['Longest', 'o=lg']]
+	['Longest', 'o=lg']
+]
 
 ART = 'art-default.jpg'
 ICON = 'icon-default.png'
@@ -33,9 +34,10 @@ def Start():
 	MediaContainer.art = R(ART)
 	MediaContainer.title1 = NAME
 	MediaContainer.viewGroup = 'InfoList'
-	DirectoryItem.thumb=R(ICON)
+	DirectoryItem.thumb = R(ICON)
 
 	HTTP.CacheTime = CACHE_1HOUR
+	HTTP.Headers['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:11.0) Gecko/20100101 Firefox/11.0'
 
 ####################################################################################################
 def MainMenu():
