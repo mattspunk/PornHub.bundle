@@ -55,6 +55,7 @@ def MainMenu():
 
 ####################################################################################################
 def SortOrder(sender, category):
+
 	dir = MediaContainer(title2=sender.itemTitle)
 
 	for (sort_title, sort) in VIDEO_SORT_ORDER:
@@ -64,6 +65,7 @@ def SortOrder(sender, category):
 
 ####################################################################################################
 def VideoList(sender, category, sort, title, page=1):
+
 	dir = MediaContainer(title2=title)
 
 	if '?' in category:
@@ -91,6 +93,7 @@ def VideoList(sender, category, sort, title, page=1):
 
 ####################################################################################################
 def PlayVideo(sender, url):
+
 	page = HTTP.Request(url, cacheTime=1).content
 	video_url = re.search("video_url.+?(http([^\"']+))", page).group(1)
 	video_url = PLAYER_URL % (video_url, String.Quote(PQS))
@@ -98,13 +101,18 @@ def PlayVideo(sender, url):
 
 ####################################################################################################
 def GetThumb(url):
-	data = HTTP.Request(url, cacheTime=CACHE_1WEEK).content
-	if data:
+
+	try:
+		data = HTTP.Request(url, cacheTime=CACHE_1MONTH).content
 		return DataObject(data, 'image/jpeg')
+	except:
+		pass
+
 	return Redirect(R(ICON))
 
 ####################################################################################################
 def TimeToSeconds(timecode):
+
 	seconds  = 0
 	duration = timecode.split(':')
 	duration.reverse()
