@@ -8,6 +8,8 @@
 	<string>2</string>
 	<key>PlexPluginMode</key>
 	<string>AlwaysOn</string>
+	<key>PlexClientPlatforms</key>
+	<string>*</string>
 	<key>PlexMediaContainer</key>
 	<array>
 		<string>Flash</string>
