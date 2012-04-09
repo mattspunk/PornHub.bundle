@@ -2,7 +2,7 @@ import re
 
 NAME = 'PornHub'
 PLAYER_URL = 'http://www.plexapp.com/player/player.php?clip=%s&pseudo=true&pqs=%s'
-PQS = '&fs=${start}'
+PQS = 'fs=${start}'
 BASE_URL = 'http://www.pornhub.com'
 CATEGORIES = '%s/categories' % BASE_URL
 
