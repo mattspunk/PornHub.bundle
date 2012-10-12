@@ -1,4 +1,4 @@
-import re
+import re, sesame
 
 NAME = 'PornHub'
 PLAYER_URL = 'http://www.plexapp.com/player/player.php?clip=%s&pseudo=true&pqs=%s'
@@ -94,8 +94,17 @@ def VideoList(sender, category, sort, title, page=1):
 def PlayVideo(sender, url):
 
 	page = HTTP.Request(url, cacheTime=1).content
-	video_url = re.search("video_url.+?(http([^\"']+))", page).group(1)
-	video_url = PLAYER_URL % (video_url, String.Quote(PQS))
+
+	video_title = re.search('"video_title":"([^"]+)"', page).group(1)
+	video_title = String.Unquote(video_title, usePlus=True)
+
+	video_url = re.search('"video_url":"([^"]+)"', page).group(1)
+	video_url = String.Unquote(video_url, usePlus=True)
+
+	video_url = sesame.decrypt(video_url, video_title, 256)
+	#Log('video_url: %s' % video_url)
+
+	video_url = PLAYER_URL % (String.Quote(video_url), String.Quote(PQS))
 	return Redirect(WebVideoItem(video_url))
 
 ####################################################################################################

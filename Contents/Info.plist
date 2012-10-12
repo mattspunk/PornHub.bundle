@@ -14,5 +14,7 @@
 	<array>
 		<string>Flash</string>
 	</array>
+	<key>PlexPluginCodePolicy</key>
+	<string>Elevated</string>
 </dict>
 </plist>
