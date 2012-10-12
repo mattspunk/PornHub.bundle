@@ -6,8 +6,6 @@
 	<string>com.plexapp.plugins.pornhub</string>
 	<key>PlexFrameworkVersion</key>
 	<string>2</string>
-	<key>PlexPluginMode</key>
-	<string>AlwaysOn</string>
 	<key>PlexClientPlatforms</key>
 	<string>*</string>
 	<key>PlexMediaContainer</key>
