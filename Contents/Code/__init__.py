@@ -1,6 +1,8 @@
 import re, sesame
 
 NAME = 'PornHub'
+PLAYER_URL = 'http://www.plexapp.com/player/player.php?clip=%s&pseudo=true&pqs=%s'
+PQS = 'fs=${start}'
 BASE_URL = 'http://www.pornhub.com'
 CATEGORIES = '%s/categories' % BASE_URL
 
@@ -84,7 +86,8 @@ def VideoList(sender, category, sort, title, page=1):
 
 		dir.Append(Function(VideoItem(PlayVideo, title=video_title, duration=duration, rating=rating, thumb=Function(GetThumb, url=thumb)), url=video_page))
 
-	dir.Append(Function(DirectoryItem(VideoList, title='Next page...', thumb=R(ICON_MORE)), category=category, sort=sort, title=title, page=page+1))
+	if len(video.xpath('//li[@class="page_next"]')) > 0:
+		dir.Append(Function(DirectoryItem(VideoList, title='Next page...', thumb=R(ICON_MORE)), category=category, sort=sort, title=title, page=page+1))
 
 	return dir
 
@@ -101,6 +104,9 @@ def PlayVideo(sender, url):
 
 	video_url = sesame.decrypt(video_url, video_title, 256)
 	#Log('video_url: %s' % video_url)
+
+	#video_url = PLAYER_URL % (String.Quote(video_url), String.Quote(PQS))
+	#return Redirect(WebVideoItem(video_url))
 
 	return Redirect(VideoItem(video_url))
 
