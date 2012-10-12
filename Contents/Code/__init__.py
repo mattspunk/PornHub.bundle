@@ -78,7 +78,7 @@ def VideoList(sender, category, sort, title, page=1):
 		video_title = v.xpath('.//a[@class="title"]')[0].text.strip()
 		video_page = v.xpath('.//a')[0].get('href')
 		duration = TimeToSeconds(v.xpath('.//var[@class="duration"]')[0].text) * 1000
-		thumb = v.xpath('.//img')[0].get('src').split('small.jpg', 1)[0] + 'large.jpg'
+		thumb = v.xpath('.//img')[0].get('data-mediumthumb')
 		try:
 			rating = float( v.xpath('.//div[contains(@class,"rating")]/div[@class="value"]')[0].text.replace('%','') ) / 10
 		except:
