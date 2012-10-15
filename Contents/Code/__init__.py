@@ -48,6 +48,7 @@ def MainMenu():
 		url = category.xpath('.//a')[0].get('href')
 		dir.Append(Function(DirectoryItem(SortOrder, title=title, thumb=Function(GetThumb, url=thumb)), category=url))
 
+	dir.Sort('title')
 	return dir
 
 ####################################################################################################
