@@ -98,7 +98,7 @@ def PlayVideo(sender, url):
 	video_title = re.search('"video_title":"([^"]+)"', page).group(1)
 	video_title = String.Unquote(video_title, usePlus=True)
 
-	video_url = re.search('"video_url":"([^"]+)"', page).group(1)
+	video_url = re.search('"quality_\d+p":"([^"]+)"', page).group(1)
 	video_url = String.Unquote(video_url, usePlus=True)
 
 	video_url = sesame.decrypt(video_url, video_title, 256)
